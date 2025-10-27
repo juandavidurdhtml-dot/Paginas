@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Sample HTML Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <input type="text" id="nombreId" placeholder="Ingresa tu nombre">
+    <input type="text" id="apellidoId" placeholder="Ingresa tu apellido">
+    <button id="botonNombre">Enviar</button>
+    <input type="text" id="nombreCompletoId" readonly>
+    <button id="botonAñadir">Añadir</button>
+    <ul id="ListaNombres">
+    </ul>
+
+    <script>
+        let nombreInput = document.getElementById("nombreId");
+        let apellidoInput = document.getElementById("apellidoId");
+        let botonNombre = document.getElementById("botonNombre");
+        let nombreCompletoInput = document.getElementById("nombreCompletoId");
+        let botonAñadir = document.getElementById("botonAñadir");
+        let listaNombres = document.getElementById("ListaNombres");
+
+        function concatenarNombres() {
+            let nombre = nombreInput.value;
+            let apellido = apellidoInput.value;
+            let nombreCompleto = nombre + " " + apellido;
+
+            if (nombre != "" && apellido != "") {
+                nombreCompletoInput.value = nombreCompleto;
+                nombreInput.value = "";
+                apellidoInput.value = "";
+                botonAñadir.addEventListener("click", añadirNombreLista);
+            }
+        }
+
+        botonNombre.addEventListener("click", concatenarNombres);
+
+        function añadirNombreLista() {
+            let nombreCompleto = nombreCompletoInput.value;
+            let nombreTamaño = nombreCompleto.replaceAll(' ', '').length;
+
+            let nuevoElemento = document.createElement("li");
+            nuevoElemento.textContent = nombreCompleto + " (" + nombreTamaño + ")";
+            listaNombres.appendChild(nuevoElemento);
+            nombreCompletoInput.value = "";
+            botonAñadir.removeEventListener("click", añadirNombreLista);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Sample HTML Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <input type="text" id="ciudadTextId" placeholder="Escribe una ciudad">
+    <button id="ciudadBoton">Añadir Ciudad</button>
+    <!--Lista de ciudades-->
+    <ol id="lista">
+
+    </ol>
+    <!--Script que añade ciudades a la lista-->
+    <script>
+        let boton = document.getElementById("ciudadBoton");
+        let lista = document.getElementById("lista");
+        boton.addEventListener("click", AñadirCiudad);
+        function AñadirCiudad() {
+            let ciudadInput = document.getElementById("ciudadTextId");
+            let ciudad = ciudadInput.value.trim();
+            if (ciudad) {
+                let elementoLista = document.createElement("li");
+                elementoLista.textContent = ciudad;
+                lista.appendChild(elementoLista);
+                ciudadInput.value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

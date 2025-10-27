@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Sample HTML Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <input type="number" id="baseId" placeholder="Ingresa una base">
+    <input type="number" id="exponenteId" placeholder="Ingresa el exponente">
+    <button id="botonCalcula">Calcula</button>
+    <input type="number" id="resultadoId" readonly>
+    <button id="botonMultiplicar">Multiplicar</button>
+    <input type="number" id="multiplicaId" readonly>
+
+    <script>
+        let baseInput = document.getElementById("baseId");
+        let exponenteInput = document.getElementById("exponenteId");
+        let botonCalcula = document.getElementById("botonCalcula");
+        let resultadoInput = document.getElementById("resultadoId");
+        let botonMultiplicar = document.getElementById("botonMultiplicar");
+        let multiplicaInput = document.getElementById("multiplicaId");
+
+        function calcula() {
+            let base = baseInput.value;
+            let exponente = exponenteInput.value;
+            let resultado = base ** exponente;
+
+            if (base != "" && exponente != "") {
+                resultadoInput.value = resultado;
+                baseInput.value = "";
+                exponenteInput.value = "";
+                botonMultiplicar.addEventListener("click", multiplica);
+            }
+        }
+
+        botonCalcula.addEventListener("click", calcula);
+
+        function multiplica() {
+            let resultado = resultadoInput.value;
+            let resultadoMultiplicado = resultado * resultado;
+
+            multiplicaInput.value = resultadoMultiplicado;
+            resultadoInput.value = "";
+            botonMultiplicar.removeEventListener("click", multiplica);
+        }
+    </script>
+</body>
+
+</html>

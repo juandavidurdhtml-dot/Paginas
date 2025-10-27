@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Sample HTML Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <h1>Numeros y JavaScript</h1>
+    </header>
+    <section>
+        <h2>1- Suma de numeros pares</h2>
+        <!-- Pares e impares -->
+        <script>
+            let par = 0;
+            let impar = 0;
+            for (let i = 0; i <= 1000; i++) {
+                if (i % 2 === 0) {
+                    par += i;
+                }
+                else if (i % 2 !== 0 && i <= 102) {
+                    impar += i;
+                }
+            }
+            impar = impar / 102;
+
+            document.write("<p> La suma de los números pares del 0 al 1000 es: " + par + "</p>");
+        </script>
+        <h2>2- Promedio de los numeros impares</h2>
+        <script>
+            document.write("<p> El promedio de los números impares del 0 al 102 es: " + impar + "</p>");
+        </script>
+    </section>
+    <section>
+        <h2>3- Suma de numeros</h2>
+        <form>
+            <label for="numeros">Números a sumar (separados por comas):</label><br>
+            <input type="text" id="numerosid" name="numeros" value="8,9,1,2"><br><br>
+            <input type="button" id="botonSuma" value="Sumar">
+        </form>
+        <div id="resultadoSuma">
+        </div>
+        <!--Suma-->
+        <script>
+            function suma() {
+                let valor = 0;
+                console.log(arguments.length);
+                array.forEach(arguments => {
+                    valor += arguments;
+                });
+                return valor;
+            }
+            document.getElementById("botonSuma").addEventListener("click", function () {
+                let inputNumeros = document.getElementById("numerosid").value;
+                let nuevoElemento = document.createElement("p");
+                nuevoElemento.textContent = "La suma de los números es: " + inputNumeros;
+                document.getElementById("resultadoSuma").appendChild(nuevoElemento);
+            });
+        </script>
+    </section>
+    <footer>
+        <p>&copy; 2024 Sample HTML Document</p>
+    </footer>
+</body>
+
+</html>

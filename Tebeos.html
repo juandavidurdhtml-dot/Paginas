@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>MarvelousTebeos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input {
+            border: solid 1px;
+        }
+
+        input:invalid {
+            border-color: #f00;
+        }
+
+        input:valid {
+            border-color: #0f0;
+        }
+        header, footer {
+            text-align: center;
+            background-color: #202020;
+            color: white;
+            padding: 10px;
+        }
+
+        footer {
+            position : absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Registro</h1>
+    </header>
+    <form method="post">
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <input type="text" name="nombre" placeholder="Nombre" required><br><br>
+            <input type="number" name="edad" placeholder="Edad" min="12" max="120" required><br><br>
+            <input type="phone" name="telefono" placeholder="Teléfono"><br><br>
+            <textarea name="direccion" placeholder="Dirección" cols="50" rows="4" maxlength="200"></textarea>
+        </fieldset>
+        <fieldset>
+            <legend>Datos Frikis</legend>
+            <label for="idioma">Idioma de los Tebeos:</label><br>
+            <select name="idioma" id="idioma">
+                <option value="Español">Español</option>
+                <option value="Inglés">Inglés</option>
+                <option value="Francés">Francés</option>
+            </select><br><br>
+            <label for="personaje_fav">Personaje Favorito:</label><br>
+            <select name="personaje_fav" id="personaje_fav">
+                <optgroup label="Los vengadores">
+                    <option value="Thor">Thor</option>
+                    <option value="Capitan América">Capitan América</option>
+                    <option value="Hulk">Hulk</option>
+                    <option value="Ojo de Halcón">Ojo de Halcón</option>
+                </optgroup>
+                <optgroup label="Los 4 fantásticos">
+                    <option value="La Cosa">La Cosa</option>
+                    <option value="Mujer Invisible">Mujer Invisible</option>
+                    <option value="Mr. Fantástico">Mr. Fantástico</option>
+                    <option value="Antorcha Humana">Antorcha Humana</option>
+                </optgroup>
+            </select><br><br>
+            <label for="color_fav">Color Favorito:</label><br>
+            <input type="color" name="color_fav">
+        </fieldset>
+    </form>
+    <footer>
+        <p>&copy; 2025 NotComics</p>
+    </footer>
+</body>
+
+</html>

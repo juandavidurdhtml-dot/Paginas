@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Sample HTML Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input,
+        select {
+            border: solid 1px;
+        }
+
+        input:invalid,
+        select:invalid {
+            border-color: #f00;
+        }
+
+        input:valid,
+        select:valid {
+            border-color: #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="Marvel.es" method="post">
+        <fieldset>
+            <legend>Datos Personales</legend>
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" pattern="[A-Za-zÑñÁÉÍÓÚáéíóúÜü\s-]{2,40}" minlength="2"
+                maxlength="40" required><br><br>
+            <label for="dni">DNI/NIE:</label>
+            <input type="text" id="dni" name="dni" pattern="^(x?\d{8}|[xyz]\d{7})[trwagmyfpdxbnjzsqvhlcke]$"
+                required><br><br>
+            <select name="estadoCivil" id="estadoCivil" required>
+                <option value="soltero">Soltero/a</option>
+                <option value="casado">Casado/a</option>
+                <option value="viudo">Viudo/a</option>
+                <option value="divorciado">Divorciado/a</option>
+                <option value="otro">Otro</option>
+            </select>
+        </fieldset> <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>

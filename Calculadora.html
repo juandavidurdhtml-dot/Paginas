@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <title>Calculadora</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: grey;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+        table {
+            background-color: black;
+            border-radius: 10px;
+            border: 10px;
+            border-style: solid;
+            border-color: black;
+        }
+
+        input[type="button"] {
+            width: 2em;
+            height: 2em;
+            margin: 5px;
+            border-radius: 10px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .botonFuncion {
+            background-color: #ff6666;
+        }
+
+        .display {
+            background-color: #e0e0e0;
+            border: 10px;
+            border-style: solid;
+            border-color: #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            width: 13em;
+            height: 5em;
+            font-size: 18px;
+        }
+
+        div#funcionContainer {
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            background-color: #5d5d5d;
+            border: 10px;
+            border-radius: 10px;
+            border-color: black;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="3"><input type="text" id="display" class="display" readonly></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="boton1" value="1"></td>
+            <td><input type="button" id="boton2" value="2"></td>
+            <td><input type="button" id="boton3" value="3"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="boton4" value="4"></td>
+            <td><input type="button" id="boton5" value="5"></td>
+            <td><input type="button" id="boton6" value="6"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="boton7" value="7"></td>
+            <td><input type="button" id="boton8" value="8"></td>
+            <td><input type="button" id="boton9" value="9"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="botonC" value="C" class="botonFuncion"></td>
+            <td><input type="button" id="boton0" value="0"></td>
+            <td><input type="button" id="botonIgual" value="=" class="botonFuncion"></td>
+        </tr>
+    </table>
+    <div id="funcionContainer">
+
+    </div>
+</body>
+<script>
+    let display = document.getElementById("display");
+    let botonC = document.getElementById("botonC");
+    let botonIgual = document.getElementById("botonIgual");
+    let funcionContainer = document.getElementById("funcionContainer");
+    let operacion = ['+', '-', '*', '/', '^'];
+
+    for (let i = 0; i < 10; i++) {
+        let botonNumero = document.getElementById("boton" + i.toString());
+        botonNumero.addEventListener("click", actualizarDisplay);
+    }
+
+    for (let i = 0; i < operacion.length; i++) {
+        let botonOperacion = document.createElement("input");
+        botonOperacion.setAttribute("type", "button");
+        botonOperacion.setAttribute("value", operacion[i]);
+        botonOperacion.addEventListener("click", actualizarDisplay);
+        funcionContainer.appendChild(botonOperacion);
+    }
+
+    botonC.addEventListener("click", clearDisplay);
+    botonIgual.addEventListener("click", calcularDisplay);
+
+    function actualizarDisplay(event) {
+        display.value += event.target.value;
+    }
+
+    function clearDisplay() {
+        display.value = "";
+    }
+
+    function calcularDisplay() {
+        let valorCompleto = display.value;
+        let valor1 = parseFloat(valorCompleto.split(/[\+\-\*\/\^]/)[0]);
+        let valor2 = parseFloat(valorCompleto.split(/[\+\-\*\/\^]/)[1]);
+        let operacion = valorCompleto.match(/[\+\-\*\/\^]/)[0];
+
+        if (valorCompleto.split(/[\+\-\*\/\^]/).length > 2) {
+            alert("Operación no válida, solo se permite una operación a la vez. :C");
+            return;
+        }
+        
+        switch (operacion) {
+            case "+": resultado = valor1 + valor2; break;
+            case "-": resultado = valor1 - valor2; break;
+            case "/": resultado = valor1 / valor2; break;
+            case "*": resultado = valor1 * valor2; break;
+            case "^": resultado = valor1 ** valor2; break;
+        }
+        display.value = resultado.toString();
+    }
+</script>
+
+</html>
